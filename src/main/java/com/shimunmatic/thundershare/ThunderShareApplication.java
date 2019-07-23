@@ -1,13 +1,13 @@
-package com.shimunmatic.springshowcase;
+package com.shimunmatic.thundershare;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringShowcaseApplication {
+public class ThunderShareApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringShowcaseApplication.class, args);
+        SpringApplication.run(ThunderShareApplication.class, args);
     }
 
 }
