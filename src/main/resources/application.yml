@@ -1,1 +1,7 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.2.135:5432/thunder
+    username: thunder
+    password: thunder
+  jpa:
+    show-sql: true
