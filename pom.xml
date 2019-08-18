@@ -15,7 +15,7 @@
     <description>File and link sharing server support for ThunderShare solution</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>12</java.version>
     </properties>
 
     <dependencies>
@@ -43,10 +43,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.liquibase</groupId>-->
-<!--            <artifactId>liquibase-core</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.7.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

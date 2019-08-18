@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="4" author="shimunmatic">
+        <insert tableName="state" schemaName="sc_thunder">
+            <column name="id">B</column>
+        </insert>
+        <insert tableName="person" schemaName="sc_thunder">
+            <column name="firstname">Matija</column>
+            <column name="lastname">Vukic</column>
+            <column name="email">matijavukic2@gmail.com</column>
+            <column name="state">B</column>
+            <column name="username">mvukic</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,7 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://192.168.2.135:5432/thunder
-    username: thunder
+    url: jdbc:postgresql://192.168.2.135:5432/thunder_db
+    username: postgres
     password: thunder
-  jpa:
-    show-sql: true
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
+    enabled: true
+    drop-first: false
+    check-change-log-location: true
+    default-schema: sc_thunder
+    database-change-log-table: thunder_db
