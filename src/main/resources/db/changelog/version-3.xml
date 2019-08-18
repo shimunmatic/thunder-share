@@ -5,13 +5,16 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="3" author="shimunmatic">
-        <addColumn tableName="person" schemaName="sc_thunder">
-            <column name="email" type="varchar(50)"/>
-        </addColumn>
-        <addLookupTable
-                existingTableName="person" existingColumnName="state" newTableSchemaName="sc_thunder"
-                newTableName="state" newColumnName="id" newColumnDataType="char(2)"/>
+    <changeSet id="4" author="shimunmatic">
+        <modifyDataType tableName="user_info" columnName="date_updated" newDataType="timestamp with time zone"/>
+        <modifyDataType tableName="user_info" columnName="date_deleted" newDataType="timestamp with time zone"/>
+
+        <insert tableName="user_info">
+            <column name="first_name">Matija</column>
+            <column name="last_name">Vukic</column>
+            <column name="user_name">matijavukic</column>
+            <column name="email">matijavukic2@gmail.com</column>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>

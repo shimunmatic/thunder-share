@@ -9,4 +9,7 @@
     <!--    it should only include includes for other changelog files-->
     <!--    <includeAll path="classpath:db/changelog/"/>-->
     <include file="classpath:db/changelog/initialize.xml"/>
+    <include file="classpath:db/changelog/version-1.xml"/>
+    <include file="classpath:db/changelog/version-2.xml"/>
+    <include file="classpath:db/changelog/version-3.xml"/>
 </databaseChangeLog>

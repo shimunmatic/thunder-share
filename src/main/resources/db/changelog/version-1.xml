@@ -5,17 +5,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="1" author="shimunmatic">
-        <createTable tableName="person">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="firstname" type="varchar(50)"/>
-            <column name="lastname" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state" type="char(2)"/>
-        </createTable>
+    <changeSet id="2" author="shimunmatic">
+        <insert tableName="user_info">
+            <column name="first_name">Shimun</column>
+            <column name="last_name">Matic</column>
+            <column name="user_name">shimunmatic</column>
+            <column name="email">shimun.matic@gmail.com</column>
+        </insert>
     </changeSet>
 
 
