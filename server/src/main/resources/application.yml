@@ -10,3 +10,7 @@ spring:
     check-change-log-location: true
     default-schema: sc_thunder
     database-change-log-table: thunder_db
+
+logging:
+  level:
+    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
