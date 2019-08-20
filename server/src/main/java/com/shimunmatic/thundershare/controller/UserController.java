@@ -23,4 +23,9 @@ public class UserController extends BaseController {
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAll());
     }
+
+    @GetMapping(path = "hi")
+    public ResponseEntity<String> getHello() {
+        return ResponseEntity.ok("Hello");
+    }
 }
