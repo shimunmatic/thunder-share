@@ -14,3 +14,4 @@ spring:
 logging:
   level:
     org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
+    com.shimunmatic.thundershare: TRACE
