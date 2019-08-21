@@ -1,5 +1,6 @@
-package com.shimunmatic.thundershare.service;
+package com.shimunmatic.thundershare.service.implementation;
 
+import com.shimunmatic.thundershare.service.definition.CrudService;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

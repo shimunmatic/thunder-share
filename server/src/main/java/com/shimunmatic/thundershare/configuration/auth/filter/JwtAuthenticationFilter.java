@@ -1,6 +1,8 @@
 package com.shimunmatic.thundershare.configuration.auth.filter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shimunmatic.thundershare.configuration.auth.SecurityConstants;
+import com.shimunmatic.thundershare.util.auth.UserCredentials;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -13,7 +15,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -27,11 +31,17 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        var username = request.getParameter("username");
-        var password = request.getParameter("password");
-        var authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
+        try {
+            var a = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+            UserCredentials credentials = new ObjectMapper().readValue(a, UserCredentials.class);
 
-        return authenticationManager.authenticate(authenticationToken);
+            var authenticationToken =
+                    new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
+            return authenticationManager.authenticate(authenticationToken);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return authenticationManager.authenticate(null);
     }
 
     @Override

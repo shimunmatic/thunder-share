@@ -1,4 +1,4 @@
-package com.shimunmatic.thundershare.service;
+package com.shimunmatic.thundershare.service.definition;
 
 import java.util.List;
 import java.util.Optional;

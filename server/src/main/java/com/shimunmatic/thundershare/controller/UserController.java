@@ -1,11 +1,12 @@
 package com.shimunmatic.thundershare.controller;
 
 import com.shimunmatic.thundershare.model.User;
-import com.shimunmatic.thundershare.service.UserService;
+import com.shimunmatic.thundershare.service.definition.user.UserService;
+import com.shimunmatic.thundershare.service.implementation.user.exception.EmailTakenException;
+import com.shimunmatic.thundershare.service.implementation.user.exception.UsernameTakenException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,11 +22,22 @@ public class UserController extends BaseController {
 
     @GetMapping(path = "all")
     public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userService.getAll());
+        try {
+            return ResponseEntity.ok(userService.getAll());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).eTag(e.getMessage()).build();
+        }
+
     }
 
-    @GetMapping(path = "hi")
-    public ResponseEntity<String> getHello() {
-        return ResponseEntity.ok("Hello");
+    @PostMapping(path = "register")
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        try {
+            return ResponseEntity.ok(userService.registerUser(user));
+        } catch (EmailTakenException | UsernameTakenException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).eTag(e.getMessage()).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).eTag(e.getMessage()).build();
+        }
     }
 }
