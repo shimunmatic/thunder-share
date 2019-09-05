@@ -26,13 +26,12 @@ public class UserController extends BaseController {
     public ResponseEntity<List<User>> getAllUsers() {
         try {
             log.trace("Getting all users");
-            log.trace("{} {}", getCurrentUsername(), getCurrentUser());
+            log.info("{} {}", getCurrentUsername(), getCurrentUser());
             return ResponseEntity.ok(userService.getAll());
         } catch (Exception e) {
             log.warn("Exception while getting all users", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).eTag(e.getMessage()).build();
         }
-
     }
 
     @PostMapping(path = "register")

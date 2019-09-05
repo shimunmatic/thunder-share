@@ -1,5 +1,6 @@
 package com.shimunmatic.thundershare;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,8 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EnableJpaRepositories
 public class ThunderShareApplicationTests {
 
-    @Test
+    //  @Test
     public void contextLoads() {
+    }
+
+    @Test
+    public void testExample() {
+        Assert.assertEquals(1, Integer.parseInt("1"));
     }
 
 }

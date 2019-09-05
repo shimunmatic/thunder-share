@@ -11,7 +11,7 @@ spring:
     default-schema: sc_thunder
     database-change-log-table: thunder_db
 
-logging:
-  level:
-    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
-    com.shimunmatic.thundershare: TRACE
+  logging:
+    level:
+      org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
+      com.shimunmatic.thundershare: TRACE

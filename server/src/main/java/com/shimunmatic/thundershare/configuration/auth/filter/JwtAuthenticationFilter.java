@@ -2,14 +2,14 @@ package com.shimunmatic.thundershare.configuration.auth.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shimunmatic.thundershare.configuration.auth.SecurityConstants;
+import com.shimunmatic.thundershare.configuration.auth.resolver.AuthenticationResolver;
+import com.shimunmatic.thundershare.configuration.auth.resolver.AuthenticationResolverFactory;
 import com.shimunmatic.thundershare.util.auth.UserCredentials;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -22,9 +22,12 @@ import java.util.stream.Collectors;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+    private final AuthenticationResolverFactory authenticationResolverFactory;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager,
+                                   AuthenticationResolverFactory authenticationResolverFactory) {
         this.authenticationManager = authenticationManager;
+        this.authenticationResolverFactory = authenticationResolverFactory;
 
         setFilterProcessesUrl(SecurityConstants.AUTH_LOGIN_URL);
     }
@@ -32,12 +35,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         try {
-            var a = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            UserCredentials credentials = new ObjectMapper().readValue(a, UserCredentials.class);
+            String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+            UserCredentials credentials = new ObjectMapper().readValue(body, UserCredentials.class);
 
-            var authenticationToken =
-                    new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
-            return authenticationManager.authenticate(authenticationToken);
+            AuthenticationResolver resolver = authenticationResolverFactory.findResolver(credentials);
+
+            return authenticationManager.authenticate(resolver.resolve(credentials));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,7 +50,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain filterChain, Authentication authentication) {
-        var user = ((UserDetails) authentication.getPrincipal()).getUsername();
+        var user = String.valueOf(authentication.getPrincipal());
 
         var roles = authentication.getAuthorities();
 

@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://thunder-db-dev.ciniod2epwg8.eu-central-1.rds.amazonaws.com/thunder_db
+    username: postgres
+    password: postgres
+  liquibase:
+    default-schema: sc_thunder
+    database-change-log-table: thunder_db
