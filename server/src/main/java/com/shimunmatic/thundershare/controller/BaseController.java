@@ -5,8 +5,9 @@ import com.shimunmatic.thundershare.service.definition.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-@Slf4j
-public class BaseController {
+@Slf4j(topic = "BaseController")
+class BaseController
+{
     private UserService userService;
 
     public BaseController(UserService userService) {
