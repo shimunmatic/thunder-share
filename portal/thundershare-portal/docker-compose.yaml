@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  ts-portal:
+    container_name: ts-portal-container
+    build: .
+    image: ts-portal
+    ports:
+      - "81:80"
