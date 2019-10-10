@@ -5,8 +5,7 @@ import com.shimunmatic.thundershare.service.definition.CrudService;
 
 import java.util.List;
 
-public interface DeviceService extends CrudService<Device, Long>
-{
+public interface DeviceService extends CrudService<Device, Long> {
 	List<Device> getAllForUser(Long userId);
 
 	Device registerDevice(Long userId, Device device);

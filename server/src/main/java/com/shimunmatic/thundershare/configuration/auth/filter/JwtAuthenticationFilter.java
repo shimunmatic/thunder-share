@@ -51,15 +51,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain filterChain, Authentication authentication) {
-		String user;
-		if (authentication.getPrincipal() instanceof UserDetails)
-		{
-			user = ((UserDetails) authentication.getPrincipal()).getUsername();
-		}
-		else
-		{
-			user = String.valueOf(authentication.getPrincipal());
-		}
+        String user;
+        if (authentication.getPrincipal() instanceof UserDetails) {
+            user = ((UserDetails) authentication.getPrincipal()).getUsername();
+        } else {
+            user = String.valueOf(authentication.getPrincipal());
+        }
         var roles = authentication.getAuthorities();
 
         var signingKey = SecurityConstants.JWT_SECRET.getBytes();

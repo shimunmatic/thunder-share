@@ -10,39 +10,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DeviceServiceImpl extends AbstractService<Device, Long> implements DeviceService
-{
+public class DeviceServiceImpl extends AbstractService<Device, Long> implements DeviceService {
 	private DeviceRepository deviceRepository;
 
-	public DeviceServiceImpl(DeviceRepository repository)
-	{
+	public DeviceServiceImpl(DeviceRepository repository) {
 		super(repository);
 		deviceRepository = repository;
 	}
 
 	@Override
-	public List<Device> getAllForUser(Long userId)
-	{
+	public List<Device> getAllForUser(Long userId) {
 		return deviceRepository.findAllByUserIdEquals(userId);
 	}
 
 	@Override
-	public Device registerDevice(Long userId, Device device)
-	{
+	public Device registerDevice(Long userId, Device device) {
 		device.setUserId(userId);
 		return deviceRepository.save(device);
 	}
 
 	@Override
-	public Device getDeviceInfo(Long deviceId, Long userId)
-	{
+	public Device getDeviceInfo(Long deviceId, Long userId) {
 		Optional<Device> optionalDevice = getById(deviceId);
-		if (optionalDevice.isEmpty())
-		{ return null; }
+		if (optionalDevice.isEmpty()) { return null; }
 		Device device = optionalDevice.get();
 
-		if (!device.getUserId().equals(userId))
-		{
+		if (!device.getUserId().equals(userId)) {
 			return null;
 		}
 		return device;
