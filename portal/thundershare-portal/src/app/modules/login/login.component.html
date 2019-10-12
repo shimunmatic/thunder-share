@@ -1,0 +1,33 @@
+<div class="wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+
+    <div class="logo">
+      <img src="https://cdn.glitch.com/ab540176-f934-423f-8889-7e3afa504839%2Flogo.svg?1555106641624" alt="Thundershare logo">
+    </div>
+
+    <div class="message">
+      Welcome, please login
+    </div>
+
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password">
+        <button mat-icon-button matSuffix matTooltip="Show password">
+          <mat-icon matSuffix>remove_red_eye</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <mat-card-actions fxLayout="row">
+      <span style="flex: 1 1 auto;"></span>
+      <button mat-button [routerLink]="['/register']">Sign up</button>
+      <button mat-raised-button color="primary">LOGIN</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>
