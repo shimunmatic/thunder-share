@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/thunder_db
     username: postgres
-    password: root
+    password: postgres
   liquibase:
     change-log: classpath:db/db.changelog-master.xml
     enabled: true
