@@ -16,7 +16,7 @@ Or use Angular Schematics extension for VSCode.
 
 ## Build
 
-Run `yarn build` to build the project. The build artifacts will be stored in the `dist/` directory. Run `yarn build:prod` for production build.
+Run `yarn build:dev` to build the project. The build artifacts will be stored in the `dist/` directory. Run `yarn build` for production build.
 
 ## Running unit tests
 
@@ -24,8 +24,25 @@ Run `yarn test` to execute the unit tests via [Karma](https://karma-runner.githu
 It uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) for consistent test executions.
 
 ## UI library
-UI is built using [Ignite UI](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/getting_started.html).
+UI is built using Angular Components
 
 ## Docker
 
-TODO
+Run `docker compose up -d` and go to http://localhost:81
+
+## Deployment
+Production site is deployed at https://thundershare.now.sh/#/.
+
+Staging site is deployed at https://thundershare-xxxxx.now.sh/#/ where xxxxx is a random number added by now.sh service.
+
+Building:
+
+  * production version:
+    * builds/deploys production version to both sites
+    * `ng deploy`
+  
+  * staging version:
+    * builds staging version and deploy it to staging link
+    * `ng deploy --target=staging --configuration=staging`
+
+

@@ -1,10 +1,11 @@
 {
   "name": "thundershare-portal",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "ng serve",
-    "build": "ng build",
-    "build:production": "ng build --prod",
+    "build": "ng build --configuration=production",
+    "build:production": "ng build --configuration=production",
+    "build:staging": "ng build --configuration=staging",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -35,6 +36,7 @@
     "@types/jasmine": "~3.4.4",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "~12.7.12",
+    "@types/node-fetch": "2.5.2",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -47,6 +49,7 @@
     "puppeteer": "^1.20.0",
     "ts-node": "~8.4.1",
     "tslint": "~5.20.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "@zeit/ng-deploy": "0.3.0"
   }
 }
