@@ -6,6 +6,7 @@ import com.shimunmatic.thundershare.service.definition.user.UserService;
 import com.shimunmatic.thundershare.service.implementation.AbstractService;
 import com.shimunmatic.thundershare.service.implementation.user.exception.EmailTakenException;
 import com.shimunmatic.thundershare.service.implementation.user.exception.UsernameTakenException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Collections;
 
+@Slf4j
 @Service
 public class UserServiceImpl extends AbstractService<User, Long> implements UserService {
     private UserRepository userRepository;
@@ -40,6 +42,7 @@ public class UserServiceImpl extends AbstractService<User, Long> implements User
 
     @Override
     public User registerUser(User user) throws UsernameTakenException, EmailTakenException {
+        log.info("Registering user: {}", user);
         User u = getByUsername(user.getUserName());
         if (u != null) { throw new UsernameTakenException(); }
         u = getByEmail(user.getEmail());
