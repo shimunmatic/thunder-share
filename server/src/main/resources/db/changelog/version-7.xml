@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="7" author="shimunmatic">
+        <insert tableName="user_info">
+            <column name="first_name">Borna</column>
+            <column name="last_name">Grgic</column>
+            <column name="user_name">bornitis</column>
+            <column name="email">trlababalan@gmail.com</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
