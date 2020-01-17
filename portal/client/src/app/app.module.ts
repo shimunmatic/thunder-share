@@ -1,12 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,10 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    RouterModule,
-    FlexLayoutModule,
-    HttpClientModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

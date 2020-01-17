@@ -1,0 +1,1 @@
+Containes pages to which user can navigate.
