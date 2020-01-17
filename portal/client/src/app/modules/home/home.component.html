@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="links">
+    <a [routerLink]="['/login']">Login</a>  <br><br>
+    <a [routerLink]="['/register']">Register</a> <br><br>
+    <a [routerLink]="['/chat']">Chat</a> <br><br>
+  </div>
+  <span>Environment:&nbsp;<b>{{environment}}</b></span><br>
+  <span>Backend:&nbsp;<b>{{backend}}</b></span>
+  <br>
+  <button (click)="getData()">Get</button>
+  <span>Date:&nbsp;{{date}}</span>
+  <span>Result:&nbsp;<b>{{data}}</b></span>
+</div>
