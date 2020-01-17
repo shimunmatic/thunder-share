@@ -2,7 +2,7 @@ server:
   port: 8070
 spring:
   datasource:
-    url: jdbc:postgresql://euve267697.serverprofi24.de:5432/thunder_db
+    url: jdbc:postgresql://h2865748.stratoserver.net:5432/thunder_db
     username: thunder
     password: thunder
   liquibase:
