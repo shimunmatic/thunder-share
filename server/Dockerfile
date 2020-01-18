@@ -29,11 +29,3 @@ WORKDIR $APP_HOME
 # Copy executable jar file from the builder image
 COPY --from=builder /build/target/*.jar thundershare.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=docker","-jar","thundershare.jar"]
-
-# CMD
-# set foo=bar
-# echo %foo%
-#
-# powershell
-# $Env:foo = "bar"
-# $Env:foo

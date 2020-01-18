@@ -2,9 +2,9 @@ server:
   port: 8080
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   liquibase:
     change-log: classpath:db/db.changelog-master.xml
     enabled: true
