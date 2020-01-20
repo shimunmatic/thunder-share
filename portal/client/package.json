@@ -6,7 +6,7 @@
     "build": "ng build",
     "build:production": "ng build --configuration=production",
     "build:staging": "ng build --configuration=staging",
-	  "build:docker":"ng build --configuration=docker",
+    "build:docker": "ng build --configuration=docker",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -28,6 +28,7 @@
     "@angular/platform-browser": "9.0.0-rc.9",
     "@angular/platform-browser-dynamic": "9.0.0-rc.9",
     "@angular/router": "9.0.0-rc.9",
+    "@datorama/akita": "datorama/akita",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

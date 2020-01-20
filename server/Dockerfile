@@ -12,7 +12,7 @@ COPY src /build/src
 RUN mvn -Dmaven.test.skip=true package
 
 ### Runtime image
-FROM adoptopenjdk/openjdk11:alpine-jre as runtime
+FROM openjdk:12-alpine as runtime
 # Expose port 8080
 EXPOSE 8080
 # Set app home folder

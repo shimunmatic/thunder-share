@@ -1,4 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SettingsComponent } from 'features/settings';
 
 @Component({
   selector: 'ts-home',
@@ -8,6 +10,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
+
+  openSettings() {
+    this.dialog.open(SettingsComponent);
+  }
 
 }
