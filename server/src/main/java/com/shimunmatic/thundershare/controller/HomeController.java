@@ -12,6 +12,6 @@ public class HomeController {
 
     @GetMapping
     public String welcome() {
-        return "Welcome to Thunder Share! 2019";
+        return "Welcome to Thunder Share! 2020";
     }
 }
