@@ -16,6 +16,10 @@
 
     <properties>
         <java.version>11</java.version>
+  <sonar.projectKey>shimunmatic_thunder-share</sonar.projectKey>
+  <sonar.organization>shimunmatic</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>67ed8ab316e40ac6703bba80ebde82a0f693d6a5</sonar.login>
     </properties>
 
     <dependencies>

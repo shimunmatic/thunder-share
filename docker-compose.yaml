@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8060:8080"
+    restart: always
+    environment:
+      - DB_URL
+      - DB_USERNAME
+      - DB_PASSWORD
+      # - DB_URL=jdbc:postgresql://database:port/db_name
+      # - DB_USERNAME=username
+      # - DB_PASSWORD=password
+
+  client:
+    build:
+      context: ./portal/client
+      dockerfile: Dockerfile
+    ports:
+      - "8070:80"
+    restart: always
+    depends_on:
+      - api
+      
+# CMD
+# set foo=bar
+# echo %foo%
+# bar
+#
+# powershell
+# $Env:foo = "bar"
+# $Env:foo
+#
+# bash
+#
+#
+#
