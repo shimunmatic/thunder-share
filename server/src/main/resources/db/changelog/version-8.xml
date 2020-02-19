@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="8" author="shimunmatic">
+        <createTable tableName="conversation" schemaName="sc_thunder">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_image_path" type="varchar(1024)"/>
+
+            <column name="deleted" type="boolean"/>
+            <column name="date_created" type="timestamp" defaultValueComputed="now()"/>
+            <column name="date_updated" type="timestamp"/>
+            <column name="date_deleted" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName="message" schemaName="sc_thunder">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="FK_MESSAGE_USER" nullable="false" referencedTableName="user_info"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="message" type="varchar(512)"/>
+
+            <column name="deleted" type="boolean"/>
+            <column name="date_created" type="timestamp" defaultValueComputed="now()"/>
+            <column name="date_updated" type="timestamp"/>
+            <column name="date_deleted" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName="user_conversation" schemaName="sc_thunder">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="FK_CONVERSATION_USER" nullable="false" referencedTableName="user_info"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="conversation_id" type="bigint">
+                <constraints foreignKeyName="FK_USER_CONVERSATION" nullable="false" referencedTableName="conversation"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="deleted" type="boolean"/>
+            <column name="date_created" type="timestamp" defaultValueComputed="now()"/>
+            <column name="date_updated" type="timestamp"/>
+            <column name="date_deleted" type="timestamp"/>
+        </createTable>
+        <comment>Added initial tables for messaging flow</comment>
+    </changeSet>
+</databaseChangeLog>

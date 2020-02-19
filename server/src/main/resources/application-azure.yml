@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://ec2-54-247-178-166.eu-west-1.compute.amazonaws.com/d50untd0a1jeor
-    username: sunqsputofjofr
-    password: 8b4b84c5e0a0e4bcdaea92549e95eab54dc07fb443a1a848f0810630e24bd8fc
-  liquibase:
-    default-schema: sc_thunder
-    database-change-log-table: d50untd0a1jeor

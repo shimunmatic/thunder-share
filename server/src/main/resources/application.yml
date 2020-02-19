@@ -2,8 +2,8 @@ server:
   port: 8070
 spring:
   datasource:
-    url: jdbc:postgresql://euve267697.serverprofi24.de:5432/thunder_db
-    username: thunder
+    url: jdbc:postgresql://localhost:5432/thunder_db
+    username: postgres
     password: thunder
   liquibase:
     change-log: classpath:db/db.changelog-master.xml
