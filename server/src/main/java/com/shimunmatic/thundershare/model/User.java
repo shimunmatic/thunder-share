@@ -4,7 +4,9 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -24,4 +26,7 @@ public class User extends BaseEntity {
     private String email;
     @Column(name = "password")
     private String password;
+    @OneToMany(mappedBy = "user")
+    private List<UserConversation> userConversations;
+
 }
