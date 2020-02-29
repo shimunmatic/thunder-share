@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="9" author="shimunmatic">
+        <createTable tableName="configuration_property" schemaName="sc_thunder">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="key" type="varchar(128)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="value" type="varchar(65534)"/>
+            <column name="deleted" type="boolean"/>
+            <column name="date_created" type="timestamp" defaultValueComputed="now()"/>
+            <column name="date_updated" type="timestamp"/>
+            <column name="date_deleted" type="timestamp"/>
+        </createTable>
+        <comment>Added initial tables for messaging flow</comment>
+    </changeSet>
+</databaseChangeLog>
